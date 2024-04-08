@@ -1,0 +1,32 @@
+name: debug
+
+on: [push]
+
+jobs:
+  debug_busybox:
+    runs-on: ubuntu-20.04
+    name: Debug
+    strategy:
+      fail-fast: false
+      matrix:
+        id:
+          - 1
+          - 2
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Set up runner
+        uses: ./.github/actions/setup-runner
+      -
+        name: Set up tracing
+        uses: ./.github/actions/setup-tracing
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Build dev image
+        uses: docker/bake-action@v4
+        with:
+          targets: dev
