@@ -12,7 +12,25 @@ jobs:
         id:
           - 1
           - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+
     steps:
+      - name: Print CPU
+        run: |
+          cat /proc/cpuinfo | grep model
       -
         name: Checkout
         uses: actions/checkout@v4
